@@ -39,10 +39,25 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
 
+Person.prototype.eat = function(food) {
+  if (this.stomach.length < 10) {
+    this.stomach.push(food);
+  }
+};
+
+Person.prototype.poop = function() {
+  this.stomach = [];
+};
+
+Person.prototype.toString = function() {
+  return `${this.name}, ${this.age}`;
+};
 /*
   TASK 2
     - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
@@ -57,9 +72,20 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
+
+Car.prototype.fill = function(gallons){
+  this.tank + gallons;
+}
+
+
+
+
 
 /*
   TASK 3
@@ -68,18 +94,28 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  Person.bind(
+  this.name = name,
+  this.age = age,
+  this.favoriteToy = favoriteToy
+  );
 }
+
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`
+}
+
+
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. this in global scope refers to the window/console object
+  2. in implicit binding, this references objects created in constructor functions
+  3. new binding states what "this" is going to be, copying our function and defining "this"
+  4. Explicit binding is when you use .call or .apply
 */
 
 
